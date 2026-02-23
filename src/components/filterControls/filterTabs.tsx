@@ -9,7 +9,7 @@ export default function FilterTabs() {
         const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
         window.history.pushState(null, '', newUrl);
         /*
-        The first argument (null in your code) is a small data object associated with that specific history entry. 
+        The first argument (null) is a small data object associated with that specific history entry. 
         This is used to restore data when the user clicks the "Back" button.
         */
         window.location.reload()

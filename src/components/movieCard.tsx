@@ -11,10 +11,10 @@ interface MovieCardProps {
 
 const ShowtimeBadge = ({ session }: { session: string }) => {
     const styles = {
-        Morning: "bg-amber-100 text-amber-700 border-amber-200", // Soft Sunrise
-        Noon: "bg-sky-100 text-sky-700 border-sky-200",        // Bright Day
-        Evening: "bg-indigo-100 text-indigo-700 border-indigo-200", // Twilight
-        Night: "bg-slate-800 text-slate-100 border-slate-700",   // Midnight
+        Morning: "bg-amber-100 text-amber-700 border-amber-200", 
+        Noon: "bg-sky-100 text-sky-700 border-sky-200",        
+        Evening: "bg-indigo-100 text-indigo-700 border-indigo-200", 
+        Night: "bg-slate-800 text-slate-100 border-slate-700",  
     };
 
     return (

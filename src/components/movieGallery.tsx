@@ -3,9 +3,19 @@ import FilterSortControls from "./filterControls/filerterSortControls";
 
 import * as movieFilters from "../utils/filters";
 
+type Movie = {
+    id: number;
+    title: string;
+    genre: string;
+    director: string;
+    release_year: string;
+    rating: number;
+    poster_url: string;
+    showtimes: number;
+}
 
-function MovieGallery({ movies }: { movies: any[] }) {
-    let filteredMovies = movies; 
+function MovieGallery({ movies }: { movies: Movie[] }) {
+    let filteredMovies = movies || []; 
 
     const searchParams = new URLSearchParams(window.location.search);
     const genreFilter = searchParams.get('genre');
@@ -26,7 +36,7 @@ function MovieGallery({ movies }: { movies: any[] }) {
 
             <FilterSortControls />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-6">
-                {filteredMovies.map((movie: any) => (
+                {filteredMovies.map((movie: Movie) => (
                     <MovieCard
                         key={movie.id}
                         {...movie} 
