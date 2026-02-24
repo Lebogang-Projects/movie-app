@@ -2,7 +2,7 @@
 
 interface MovieCardProps {
     title: string;
-    release_year: string;
+    release_year: number;
     rating: number;
     poster_url: string;
     genre: string;
@@ -10,11 +10,11 @@ interface MovieCardProps {
 }
 
 const ShowtimeBadge = ({ session }: { session: string }) => {
-    const styles = {
-        Morning: "bg-amber-100 text-amber-700 border-amber-200", 
-        Noon: "bg-sky-100 text-sky-700 border-sky-200",        
-        Evening: "bg-indigo-100 text-indigo-700 border-indigo-200", 
-        Night: "bg-slate-800 text-slate-100 border-slate-700",  
+    const styles: { [key: string]: string } = {
+        "Morning": "bg-amber-100 text-amber-700 border-amber-200", 
+        "Noon": "bg-sky-100 text-sky-700 border-sky-200",        
+        "Evening": "bg-indigo-100 text-indigo-700 border-indigo-200", 
+        "Night": "bg-slate-800 text-slate-100 border-slate-700",  
     };
 
     return (
@@ -47,7 +47,6 @@ export default function MovieCard(props: MovieCardProps) {
                     alt={props.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Rating Badge floating on image */}
                 <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md text-yellow-400 px-2 py-1 rounded-lg text-sm font-bold">
                     ★ {props.rating}
                 </div>

@@ -61,6 +61,7 @@ export function sortMovies(movies: any[], ascending: string) {
    } else if(ascending === "rating_desc") {
         return movies.sort((a, b) => b.rating - a.rating);
    }
+    return movies;
 }
 
 
