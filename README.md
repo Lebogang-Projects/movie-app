@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# Movie Gallery (Render Control Without State)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to affect rendering without `useState` or a state management library by driving UI changes through URL query parameters and pure functions.
 
-Currently, two official plugins are available:
+## Goal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Show how rendering can be influenced using:
 
-## React Compiler
+- URL search params (`window.location.search`).
+- Stateless filter and sort utilities.
+- Pure rendering based on props and derived values.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Movie gallery with filtering and sorting via query parameters.
+- Stateless filtering utilities in [src/utils/filters.ts](src/utils/filters.ts).
+- UI components that render purely from props and derived values.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## How Rendering Is Affected (Without State)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Rendering changes are driven by the URL query string (e.g., `?genre=drama&rating=8.5&sort=rating_desc`).
+The gallery reads these params and applies pure filter/sort functions to the dataset before rendering.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Key logic lives in [src/components/movieGallery.tsx](src/components/movieGallery.tsx).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+### Prerequisites
+
+- Node.js (LTS recommended)
+- npm (comes with Node.js)
+
+### Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run the app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Vite will print the local URL in the terminal (typically http://localhost:5173).
+
+## Demo Images
+
+### Gallery Overview
+
+![Movie Gallery](/src/assets/capture-1.png)
+
+### Filtering By Genre
+
+![Movie Gallery](/src/assets/capture-2.png)
+
+### Sorting By Rating
+
+![Movie Gallery](/src/assets/capture-4.png)
+
+### Filtering By Showtime
+
+![Movie Gallery](/src/assets/capture-3.png)
+
+## Example URLs
+
+- `?genre=drama`
+- `?rating=8.8`
+- `?release_year=1994`
+- `?showtime=Evening`
+- `?sort=rating_desc`
+
+

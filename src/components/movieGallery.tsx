@@ -8,14 +8,14 @@ type Movie = {
     title: string;
     genre: string;
     director: string;
-    release_year: string;
+    release_year: number;
     rating: number;
     poster_url: string;
     showtimes: number;
 }
 
 function MovieGallery({ movies }: { movies: Movie[] }) {
-    let filteredMovies = movies || []; 
+    let filteredMovies = movies; 
 
     const searchParams = new URLSearchParams(window.location.search);
     const genreFilter = searchParams.get('genre');
